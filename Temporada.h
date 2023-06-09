@@ -1,22 +1,18 @@
 /*
 Autor Roger Vicente Rendon Cuevas
 6/7/2023
-Define header clase Serie
+Define header clase Video
 */
-#ifndef SERIES_H
-#define SERIES_H
+#ifndef TEMPORADA_H
+#define TEMPORADA_H
 #include <iostream>
 #include <string>
 #include <vector>
 #include "Video.h"
+#include "Series.h"
 using namespace std;
 
-class Series : public Video{
-
-    private:
-    
-
-    public:
+class Temporada:public Video{
 
 };
 

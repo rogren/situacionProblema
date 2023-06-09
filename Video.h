@@ -21,6 +21,12 @@ class Video{
     public:
         Video(string iD1, string nombre1, string genero1, int calificacion1,
         float duracion1, int fechaEstreno1 );
-};
 
+        string getID() const;
+        string getNombre() const;
+        string getGenero() const;
+        int getCalificacion() const;
+        float getDuracion() const;
+        int getFechaEstreno() const;
+};
 #endif
