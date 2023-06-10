@@ -25,4 +25,7 @@ int Episodio:: getTemporada() const{
 string Episodio:: getIdEp() const{
     return iDepisodio;
 }
+string Episodio:: getNombreEpisodio() const{
+    return nombreEpisodio;
+}
 

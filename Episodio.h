@@ -27,6 +27,7 @@ class Episodio : public Video {
         int getTemporada() const;
         int getNumEpisodio() const;
         string getIdEp() const;
+        string getNombreEpisodio() const;
 };
 
 #endif
