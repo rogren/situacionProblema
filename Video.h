@@ -14,19 +14,19 @@ class Video{
         string iD;
         string nombre;
         string genero;
-        int calificacion;
-        float duracion;
-        int fechaEstreno;
+        float calificacion;
+        int duracion;
+        string fechaEstreno;
 
     public:
-        Video(string iD1, string nombre1, string genero1, int calificacion1,
-        float duracion1, int fechaEstreno1 );
+        Video(string iD1, string nombre1, int duracion1, string genero1,
+                 float calificacion1, string fechaEstreno1);
 
         string getID() const;
         string getNombre() const;
         string getGenero() const;
-        int getCalificacion() const;
-        float getDuracion() const;
-        int getFechaEstreno() const;
+        float getCalificacion() const;
+        int getDuracion() const;
+        string getFechaEstreno() const;
 };
 #endif

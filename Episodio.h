@@ -15,12 +15,18 @@ class Episodio : public Video {
     private:
         int temporada;
         int numEpisodio;
+        string iDepisodio;
+        string nombreEpisodio;
 
     public:
-        Episodio(string iD1, string nombre1, string genero1, int calificacion1,
-             float duracion1, int fechaEstreno1, int temporada1, int numeroEpisodio1);
+        Episodio(string iD1, string nombre1, int duracion1, string genero1,
+                 float calificacion1, string fechaEstreno1,  string iDepisodio1, string nombreEpisodio1,
+                 int temporada1, int numEpisodio1);
+        
+
         int getTemporada() const;
         int getNumEpisodio() const;
+        string getIdEp() const;
 };
 
 #endif
