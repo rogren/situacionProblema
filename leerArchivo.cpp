@@ -7,9 +7,11 @@ using namespace std;
 #include <string>
 #include <sstream>
 #include <vector>
+#include "Peliculas.h"
+
 vector<string> separar(string linea);
 
-main(int argc, char const *argv[])
+int main(int argc, char const *argv[])
 {
     ifstream entrada;
     entrada.open("DatosPeliculas.csv");
@@ -19,18 +21,23 @@ main(int argc, char const *argv[])
 
     while (getline(entrada, linea))
     {
-       // cout << (numeroLinea++) << ":" << linea << endl;
-        vector<string> datos = separar(linea);
-        if (datos.size()==6)
+        if (numeroLinea > 1)
         {
-            cout << "Pelicula: ";
-            //new Pelicula(datos);
-        } else
-        {
-            cout << "Episodio: ";
-            //new Episodio(datos);
+            // cout << (numeroLinea++) << ":" << linea << endl;
+            vector<string> datos = separar(linea);
+            if (datos.size() == 6)
+            {
+                cout << "Pelicula: ";
+                Peliculas* Pelicula = new Pelicula(datos);
+            }
+            else
+            {
+                cout << "Episodio: ";
+                new Episodio(datos);
+            }
+            cout << endl;
         }
-        cout << endl;
+        numeroLinea++;
     }
 
     entrada.close();
@@ -49,11 +56,11 @@ vector<string> separar(string linea)
     {
         if (dato != "")
         {
-            //cout << dato << endl;
-            tokens.push_back(dato); //GUARDA en vector
+            // cout << dato << endl;
+            tokens.push_back(dato); // GUARDA en vector
             numeroTokens++;
         }
     }
-    //cout << "Tokens: " << numeroTokens << endl << endl;
+    // cout << "Tokens: " << numeroTokens << endl << endl;
     return tokens;
 }
