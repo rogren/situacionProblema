@@ -14,7 +14,8 @@ using namespace std;
 class Peliculas:public Video{
     public:
         Peliculas(string iD1, string nombre1, int duracion1, string genero1,
-                   float calificacion1, string fechaEstreno1);
+                   float calificacion1, string fechaEstreno1); 
+        void mostrarDatos() const;
 };
 
 #endif

@@ -68,18 +68,23 @@ bool Streaming::CargaExcel(const string &archivo)
 
 void Streaming::mPeliculas()
 {
-    cout << "Peliculas" << endl;
+    cout << endl;
+    cout << "============ Peliculas ============" << endl;
     for (Peliculas *pelicula : peliculas)
     {
-        cout << "ID de Pelicula: " << pelicula->getID() << " Titulo: " << pelicula->getNombre() << " Genero: " << pelicula->getGenero() << endl;
+        pelicula->mostrarDatos();
     }
 }
 
 void Streaming::mEpisodios()
 {
-    cout << "Episodios" << endl;
+    cout << endl;
+    cout << "============ Episodios ============" << endl;
     for (Episodio *episodio : episodios)
     {
-        cout << "ID de Episodio: " << episodio->getID() << " Titulo: " << episodio->getNombre() << " Genero: " << episodio->getGenero() << endl;
+        episodio->mostrarDatos();
     }
 }
+
+
+

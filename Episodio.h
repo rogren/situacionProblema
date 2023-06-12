@@ -23,7 +23,7 @@ class Episodio : public Video {
                  float calificacion1, string fechaEstreno1,  string iDepisodio1, string nombreEpisodio1,
                  int temporada1, int numEpisodio1);
         
-
+        void mostrarDatos() const;
         int getTemporada() const;
         int getNumEpisodio() const;
         string getIdEp() const;

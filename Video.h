@@ -22,6 +22,7 @@ class Video{
         Video(string iD1, string nombre1, int duracion1, string genero1,
                  float calificacion1, string fechaEstreno1);
 
+        virtual void mostrarDatos() const = 0;
         string getID() const;
         string getNombre() const;
         string getGenero() const;

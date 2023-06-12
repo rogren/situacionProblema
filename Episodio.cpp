@@ -18,6 +18,20 @@ Episodio::Episodio(string iD1, string nombre1, int duracion1, string genero1,
     nombreEpisodio = nombreEpisodio1;
 
 }
+void Episodio::mostrarDatos() const
+{
+    cout << "ID: " << getID() << endl;
+    cout << "Nombre: " << getNombre() << endl;
+    cout << "Duracion: " << getDuracion() << endl;
+    cout << "Genero: " << getGenero() << endl;
+    cout << "Calificacion: " << getCalificacion() << endl;
+    cout << "Fecha de Estreno: " << getFechaEstreno() << endl;
+    cout << "ID de Episodio: " << getIdEp() << endl;
+    cout << "Nombre de Episodio: " << getNombreEpisodio() << endl;
+    cout << "Temporada: " << getTemporada() << endl;
+    cout << "Episodio: " << getNumEpisodio() << endl;
+    cout << endl;
+}
 
 int Episodio:: getTemporada() const{
     return temporada;
@@ -27,5 +41,8 @@ string Episodio:: getIdEp() const{
 }
 string Episodio:: getNombreEpisodio() const{
     return nombreEpisodio;
+}
+int Episodio:: getNumEpisodio() const{
+    return numEpisodio;
 }
 

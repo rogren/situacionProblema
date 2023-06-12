@@ -13,20 +13,18 @@ string Series::getiDSer() const {
 string Series::getNombreSerie() const {
     return nombreSerie;
 }
-string Series::getGenero() const {
-    return genero;
-}
 
-void Series::mEpisodios(Episodio* episodio) {
-    episodios.push_back(episodio);
+
+void Series::mEpisodios() {
     cout << "Episodios: " << nombreSerie << endl;
-    for (Episodio* ep : episodios) {
-        cout << "ID de episodio " << ep->getIdEp() << " Nombre " << ep->getNombreEpisodio() << endl;
+    for (Episodio* episodio : episodios) {
+        cout << "ID de episodio " << episodio->getIdEp() << " Nombre " << episodio->getNombreEpisodio() << endl;
     }
 }
 
-vector<Episodio*> Series::getEpisodios() const {
-    return episodios;
+void Series::EpisodiosSerie(Episodio* episodio){
+    episodios.push_back(episodio);
 }
+
 
     

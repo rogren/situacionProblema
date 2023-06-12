@@ -21,11 +21,11 @@ class Series{
     public:
         Series(string iDSer1, string nombreSerie1, string genero1);
         
+        void mostrarDatos() const;
         string getiDSer() const;
         string getNombreSerie() const;
-        string getGenero() const;
-        vector<Episodio*> getEpisodios() const;
-        void mEpisodios(Episodio* episodio);
+        void EpisodiosSerie(Episodio* episodio);
+        void mEpisodios();
 };
 
 #endif

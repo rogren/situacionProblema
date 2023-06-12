@@ -21,6 +21,10 @@ Video::Video(string iD1, string nombre1, int duracion1, string genero1,
     fechaEstreno = fechaEstreno1;
 }
 
+void mostrarDatos(){
+
+}
+
 string Video::getID() const{
     return iD;
 }

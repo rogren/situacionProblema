@@ -16,18 +16,16 @@ int main()
         cout << " Ingresa el nombre del archivo que quieres abrir: ";
         cin >> archivo;
     }
-
-    streaming.CargaExcel(archivo);
-
     while (true)
     {
-
+        cout << endl;
         int opcion;
         cout << "=======Prueba=======" << endl;
         cout << "1. Mostrar Peliculas" << endl;
         cout << "2. Mostrar Series" << endl;
         cout << "3. Salir " << endl;
 
+        cout << "Elige una opcion: ";
         cin >> opcion;
 
         if (opcion == 1)
