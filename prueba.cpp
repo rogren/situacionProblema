@@ -34,7 +34,7 @@ int main()
         }
         else if (opcion == 2)
         {
-            streaming.mEpisodios();
+            streaming.mSeries();
         }
         else if (opcion == 3)
         {

@@ -21,13 +21,14 @@ class Streaming{
         private:
             vector<Peliculas*> peliculas; // Vector para almacenar las películas
             vector<Episodio*> episodios; // Vector para almacenar los episodios
+            vector<Series*> series;
             vector<string> separar(string linea);
-            void nuevoEpisodio(const string& iDSerie, Episodio* episodio);
         public:
             Streaming();
             bool CargaExcel(const string& archivo);
-            void mEpisodios();
+            //void mEpisodios();
             void mPeliculas();
+            void mSeries() ;
             
 };
 #endif
