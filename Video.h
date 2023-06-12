@@ -23,6 +23,7 @@ class Video{
                  float calificacion1, string fechaEstreno1);
 
         virtual void mostrarDatos() const = 0;
+        virtual bool mostrarPorCalificacion(float valor) const = 0;
         string getID() const;
         string getNombre() const;
         string getGenero() const;

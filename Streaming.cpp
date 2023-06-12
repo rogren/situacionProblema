@@ -72,7 +72,7 @@ bool Streaming::CargaExcel(const string &archivo)
 void Streaming::mPeliculas()
 {
     cout << endl;
-    cout << "************ P E L I C U L A S ***********" << endl;
+    cout << "********************* P E L I C U L A S *********************" << endl;
     for (Peliculas *pelicula : peliculas)
     {
         pelicula->mostrarDatos();
@@ -99,6 +99,21 @@ void Streaming::mSeries()
             episodio->mostrarDatos();
     }
 }
+
+bool Streaming::mostrarCalif(float valor)const{
+bool parametro = false;
+for ( Peliculas *pelicula:peliculas)
+{
+    if(pelicula->getCalificacion() >= valor)
+    {
+        pelicula->mostrarDatos();
+        parametro=true;
+    }
+}
+
+return parametro;
+
+}
 /*
 void Streaming::mEpisodios()
 {
@@ -107,6 +122,18 @@ void Streaming::mEpisodios()
     for (Episodio *episodio : episodios)
     {
         episodio->mostrarDatos();
+    }
+}
+
+for (Series *serie :series)
+{
+    for(Episodio *episodio : serie->getEpisodios())
+    {
+        if(episodio->getCalificacion() >= valor)
+        {
+            episodio->mostrarDatos();
+            parametro=true;
+        }
     }
 }
 */

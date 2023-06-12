@@ -16,6 +16,7 @@ class Peliculas:public Video{
         Peliculas(string iD1, string nombre1, int duracion1, string genero1,
                    float calificacion1, string fechaEstreno1); 
         void mostrarDatos() const;
+        bool mostrarPorCalificacion(float valor) const;
 };
 
 #endif

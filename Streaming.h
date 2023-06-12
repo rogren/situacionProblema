@@ -29,6 +29,7 @@ class Streaming{
             //void mEpisodios();
             void mPeliculas();
             void mSeries() ;
+            bool mostrarCalif(float valor) const;
             
 };
 #endif

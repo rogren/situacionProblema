@@ -23,7 +23,8 @@ int main()
         cout << "=======Prueba=======" << endl;
         cout << "1. Mostrar Peliculas" << endl;
         cout << "2. Mostrar Series" << endl;
-        cout << "3. Salir " << endl;
+        cout << "3. Filtrar Peliculas por calificacion" << endl;
+        cout << "4. Salir " << endl;
 
         cout << "Elige una opcion: ";
         cin >> opcion;
@@ -36,15 +37,30 @@ int main()
         {
             streaming.mSeries();
         }
-        else if (opcion == 3)
+        else if(opcion == 3)
+        {
+            float calif;
+            cout << "Ingresa la calificacion por la que deseas filtrar: ";
+            cin >> calif;
+            cout << endl;
+            cout << "******************** Peliculas con calificacion mayor o igual a " << calif << " ********************" << endl;
+            bool parametro = streaming.mostrarCalif(calif);
+
+            if(!parametro)
+            {
+                cout << "No se encontraron peliculas con calificacion de " << calif << endl;
+            }
+        }
+        else if (opcion == 4)
         {
             cout << "Saliendo del servicio..." << endl;
             break;
         }
         else
         {
-            cout << "Opcion invalida" << endl;
-            return 0;
+            cout << endl;
+            cout << "O P C I O N  I N V A L I D A" << endl;
+    
         }
     }
 

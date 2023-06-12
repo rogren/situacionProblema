@@ -28,3 +28,7 @@ void Peliculas::mostrarDatos() const
         cout << "Fecha de Estreno: " << getFechaEstreno() << endl;
         cout << endl;
 }
+
+bool Peliculas::mostrarPorCalificacion(float valor) const{
+        return getCalificacion() >= valor;
+}
