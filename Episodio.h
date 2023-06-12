@@ -24,7 +24,6 @@ class Episodio : public Video {
                  int temporada1, int numEpisodio1);
         
         void mostrarDatos() const;
-        bool mostrarPorCalificacion(float valor) const;
         int getTemporada() const;
         int getNumEpisodio() const;
         string getIdEp() const;

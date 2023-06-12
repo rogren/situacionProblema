@@ -100,19 +100,87 @@ void Streaming::mSeries()
     }
 }
 
-bool Streaming::mostrarCalif(float valor)const{
-bool parametro = false;
-for ( Peliculas *pelicula:peliculas)
+bool Streaming::mostrarCalifPel(float valor) const
 {
-    if(pelicula->getCalificacion() >= valor)
+    int calMAX = 7; // define cual es la calificacion maxima que tienen los videos
+    bool parametro = false;
+
+    while (!parametro)
     {
-        pelicula->mostrarDatos();
-        parametro=true;
+        for (Peliculas *pelicula : peliculas)
+        {
+            if (pelicula->getCalificacion() >= valor)
+            {
+                pelicula->mostrarDatos();
+                parametro = true;
+            }
+        }
+
+        if (!parametro)
+        {
+            cout << endl;
+            cout << "No se encontraron peliculas con calificacion de " << valor << endl;
+
+            if (valor > calMAX)
+            {
+                cout << "Recuerda que la calificacion maxima es " << calMAX << endl;
+                cout << endl;
+            }
+            cout << "Ingresa la calificacion por la que deseas filtrar: ";
+            cin >> valor;
+        }
     }
+
+    return parametro;
 }
 
-return parametro;
+bool Streaming::mostrarCalifVid(float valor) const
+{
+    int calMAX = 7; // define cual es la calificacion maxima que tienen los videos
+    bool parametro = false;
 
+    while (!parametro)
+    {
+        for (Peliculas *pelicula : peliculas)
+        {
+            if (pelicula->getCalificacion() >= valor)
+            {
+                pelicula->mostrarDatos();
+                parametro = true;
+            }
+        }
+
+        for (Series *serie : series)
+        {
+            for (Episodio *episodio : serie->getEpisodios())
+            {
+                if (episodio->getCalificacion() >= valor)
+                {
+                    cout << "========================================================================" << endl;
+                    cout << "iD: " << episodio->getID();
+                    cout << " Nombre: " << episodio->getNombre() << endl;
+                    cout << "========================================================================" << endl;
+                    cout << "Genero: " << episodio->getGenero() << endl;
+                    episodio->mostrarDatos();
+                    parametro = true;
+                }
+            }
+        }
+        if (!parametro)
+        {
+            cout << endl;
+            cout << "No se encontraron peliculas con calificacion de " << valor << endl;
+
+            if (valor > calMAX)
+            {
+                cout << "Recuerda que la calificacion maxima es " << calMAX << endl;
+                cout << endl;
+            }
+            cout << "Ingresa la calificacion por la que deseas filtrar: ";
+            cin >> valor;
+        }
+    }
+    return parametro;
 }
 /*
 void Streaming::mEpisodios()

@@ -28,10 +28,6 @@ void Episodio::mostrarDatos() const
     cout << "Calificacion: " << getCalificacion() << endl;
     cout << endl;
 }
-bool Episodio::mostrarPorCalificacion(float valor) const
-{
-    return getCalificacion() >= valor;
-}
 
 int Episodio::getTemporada() const
 {

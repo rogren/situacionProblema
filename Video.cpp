@@ -25,9 +25,6 @@ void mostrarDatos(){
 
 }
 
-bool mostrarPorCalificacion(float valor){
-
-}
 
 string Video::getID() const{
     return iD;

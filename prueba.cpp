@@ -24,7 +24,8 @@ int main()
         cout << "1. Mostrar Peliculas" << endl;
         cout << "2. Mostrar Series" << endl;
         cout << "3. Filtrar Peliculas por calificacion" << endl;
-        cout << "4. Salir " << endl;
+        cout << "4. Filtrar Videos en general por calificacion" << endl;
+        cout << "5. Salir " << endl;
 
         cout << "Elige una opcion: ";
         cin >> opcion;
@@ -37,21 +38,32 @@ int main()
         {
             streaming.mSeries();
         }
-        else if(opcion == 3)
+        else if (opcion == 3)
         {
             float calif;
             cout << "Ingresa la calificacion por la que deseas filtrar: ";
             cin >> calif;
             cout << endl;
             cout << "******************** Peliculas con calificacion mayor o igual a " << calif << " ********************" << endl;
-            bool parametro = streaming.mostrarCalif(calif);
+            cout << endl;
+            bool parametro = streaming.mostrarCalifPel(calif);
 
-            if(!parametro)
-            {
-                cout << "No se encontraron peliculas con calificacion de " << calif << endl;
-            }
         }
         else if (opcion == 4)
+        {
+            float calif;
+            cout << "Ingresa la calificacion por la que deseas filtrar: ";
+            cin >> calif;
+            cout << endl;
+            cout << "******************** Videos con calificacion mayor o igual a " << calif << " ********************" << endl;
+            bool parametro = streaming.mostrarCalifVid(calif);
+
+            if (!parametro)
+            {
+                cout << "No se encontraron videos con calificacion de " << calif << endl;
+            }
+        }
+        else if (opcion == 5)
         {
             cout << "Saliendo del servicio..." << endl;
             break;
@@ -60,7 +72,6 @@ int main()
         {
             cout << endl;
             cout << "O P C I O N  I N V A L I D A" << endl;
-    
         }
     }
 

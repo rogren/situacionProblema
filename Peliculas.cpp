@@ -29,6 +29,3 @@ void Peliculas::mostrarDatos() const
         cout << endl;
 }
 
-bool Peliculas::mostrarPorCalificacion(float valor) const{
-        return getCalificacion() >= valor;
-}
