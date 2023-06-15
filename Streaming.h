@@ -31,6 +31,6 @@ class Streaming{
             void mSeries() ;
             bool mostrarCalifPel(float valor) const;
             bool mostrarCalifVid(float valor) const;
-            
+            bool filtrarSerie(const string& nombreSerie) const;
 };
 #endif

@@ -182,6 +182,28 @@ bool Streaming::mostrarCalifVid(float valor) const
     }
     return parametro;
 }
+
+bool Streaming::filtrarSerie(const string &nombreSerie) const
+{
+    bool encontrado = false;
+    for (Series *serie : series)
+    {
+        if (serie->getNombreSerie() == nombreSerie)
+        {
+            encontrado = true;
+            for (Episodio *episodio : serie->getEpisodios())
+            {
+                cout << "----------------------------------------------------" << endl;
+                episodio->mostrarDatos();
+            }
+        }
+    }
+    if (!encontrado)
+    {
+        cout << "La serie no esta disponible en la plataforma" << endl;
+    }
+}
+
 /*
 void Streaming::mEpisodios()
 {
