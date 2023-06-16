@@ -26,7 +26,9 @@ int main()
         cout << "3. Filtrar Peliculas por calificacion" << endl;
         cout << "4. Filtrar Videos en general por calificacion" << endl;
         cout << "5. Filtrar Episodios de Series" << endl;
-        cout << "6. Salir " << endl;
+        cout << "6. Calificar videos " << endl;
+        cout << "7. Obtener promedio de calificacion de serie" << endl;
+        cout << "8. Salir " << endl;
 
         cout << "Elige una opcion: ";
         cin >> opcion;
@@ -67,13 +69,17 @@ int main()
         {
             string nombreSerie;
             cout << "Ingresa el nombre de la serie que deseas filtrar: ";
-            cin.ignore();   // .ignore es utilizado para evitar que el menu entre en bucle infitito 
-            getline(cin, nombreSerie);   
+            cin.ignore(); // .ignore es utilizado para evitar que el menu entre en bucle infitito
+            getline(cin, nombreSerie);
             cout << endl;
             cout << "******************** Episodios de la serie: " << nombreSerie << " ********************" << endl;
             streaming.filtrarSerie(nombreSerie);
         }
         else if (opcion == 6)
+        {
+            streaming.calificacionV();
+        }
+        else if (opcion == 8)
         {
             cout << "Saliendo del servicio..." << endl;
             break;

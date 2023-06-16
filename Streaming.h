@@ -26,11 +26,11 @@ class Streaming{
         public:
             Streaming();
             bool CargaExcel(const string& archivo);
-            //void mEpisodios();
             void mPeliculas();
             void mSeries() ;
             bool mostrarCalifPel(float valor) const;
             bool mostrarCalifVid(float valor) const;
             bool filtrarSerie(const string& nombreSerie) const;
+            void calificacionV();
 };
 #endif

@@ -203,27 +203,54 @@ bool Streaming::filtrarSerie(const string &nombreSerie) const
         cout << "La serie no esta disponible en la plataforma" << endl;
     }
 }
-
-/*
-void Streaming::mEpisodios()
+void Streaming::calificacionV()
 {
-    cout << endl;
-    cout << "============ Episodios ============" << endl;
-    for (Episodio *episodio : episodios)
-    {
-        episodio->mostrarDatos();
-    }
-}
+    string titulo;
+    cout << " Ingresa el titulo de la pelicula o episodio que quieres calificar : ";
+    cin.ignore();
+    getline(cin, titulo);
 
-for (Series *serie :series)
-{
-    for(Episodio *episodio : serie->getEpisodios())
+    bool encontrado = false;
+
+    for (Peliculas *pelicula : peliculas)
     {
-        if(episodio->getCalificacion() >= valor)
+        if (pelicula->getNombre() == titulo)
         {
-            episodio->mostrarDatos();
-            parametro=true;
+            float calificacion;
+            cout << " Ingresa la calificacion que quieres dar a " << pelicula->getNombre() << " : ";
+            cin >> calificacion;
+            pelicula->setCalificacion(calificacion);
+            encontrado = true;
+            break;
         }
     }
+
+    if (!encontrado)
+    {
+        for (Series *serie : series)
+        {
+            for (Episodio *episodio : serie->getEpisodios())
+            {
+                if (episodio->getNombreEpisodio() == titulo)
+                {
+                    float calificacion;
+                    cout << " Ingresa la calificacion que quieres dar a " << episodio->getNombreEpisodio() << " : ";
+                    cin >> calificacion;
+                    episodio->setCalificacion(calificacion);
+                    encontrado = true;
+                    cout << endl << " ¡Se asigno la calificacion correctamente! " << endl;
+                    break;
+                }
+            }
+            if (encontrado)
+            {
+                break;
+            }
+        }
+    }
+    if (!encontrado)
+    {
+        cout << "No se encontro en la plataforma el video que diste" << endl;
+    }
 }
-*/
+

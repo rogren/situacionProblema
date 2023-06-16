@@ -21,20 +21,6 @@ void Series::agregarEp(Episodio *episodio)
     episodios.push_back(episodio);
 }
 
-/*
-void Series::mostrarDatos() const
-{
-    cout << "ID: " << iDSer << endl;
-    cout << "Nombre: " << nombreSerie << endl;
-    cout << "Episodios: " << endl;
-
-    for (Episodio *episodio : episodios)
-    {
-        episodio->mostrarDatos();
-    }
-}
-*/
-
 vector<Episodio *> &Series::getEpisodios()
 {
     return episodios;

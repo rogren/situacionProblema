@@ -24,8 +24,14 @@ Video::Video(string iD1, string nombre1, int duracion1, string genero1,
 void mostrarDatos(){
 
 }
-
-
+void Video::setCalificacion(float calificacionNueva) {
+    int calMAX = 7;
+    if (calificacionNueva >= 0 && calificacionNueva <= calMAX) {
+        calificacion = calificacionNueva;
+    } else {
+        cout << endl << "Error: La calificacion debe estar en el rango de 0 a 7." << endl;
+    }
+}
 string Video::getID() const{
     return iD;
 }

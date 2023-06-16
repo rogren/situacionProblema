@@ -28,6 +28,9 @@ class Episodio : public Video {
         int getNumEpisodio() const;
         string getIdEp() const;
         string getNombreEpisodio() const;
+        void setCalificacion(float calificacionNueva);
+
+        
 };
 
 #endif

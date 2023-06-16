@@ -29,3 +29,7 @@ void Peliculas::mostrarDatos() const
         cout << endl;
 }
 
+void Peliculas::setCalificacion(float calificacionNueva)
+{
+        Video::setCalificacion(calificacionNueva);
+}

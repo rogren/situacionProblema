@@ -29,6 +29,11 @@ void Episodio::mostrarDatos() const
     cout << endl;
 }
 
+void Episodio::setCalificacion(float calificacionNueva)
+{
+    Video::setCalificacion(calificacionNueva);
+}
+
 int Episodio::getTemporada() const
 {
     return temporada;
@@ -44,4 +49,9 @@ string Episodio::getNombreEpisodio() const
 int Episodio::getNumEpisodio() const
 {
     return numEpisodio;
+}
+
+void setCalificacion(float calificacion)
+{
+    calificacion = calificacion;
 }
