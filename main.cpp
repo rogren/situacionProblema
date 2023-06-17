@@ -88,7 +88,7 @@ int main()
             cout << endl;
 
             float promedioCalificacion = streaming.promedioCalificacion(nombreSerie);   //llama al metodo promedioCalificacion de clase Streaming 
-            cout << "El promedio de calificación de la serie '" << nombreSerie << "' es: " << promedioCalificacion << endl;
+            cout << "El promedio de calificacion de la serie '" << nombreSerie << "' es: " << promedioCalificacion << endl;
         }
         else if (opcion == 8)
         {

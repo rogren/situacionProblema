@@ -61,14 +61,14 @@ bool Streaming::CargaExcel(const string &archivo)
                     series.push_back(nSerie);
                 }
             }
-            numeroLinea++;  //siguiente linea
+            numeroLinea++; // siguiente linea
         }
-        entrada.close();    //cerrar archivo
-        return true;    
+        entrada.close(); // cerrar archivo
+        return true;
     }
     else
     {
-        cout << " ERROR Archivo no encontrado" << endl;  // mensaje de error si no se encuentra el archivo
+        cout << " ERROR Archivo no encontrado" << endl; // mensaje de error si no se encuentra el archivo
         return false;
     }
 }
@@ -77,9 +77,9 @@ void Streaming::mPeliculas()
 {
     cout << endl;
     cout << "********************* P E L I C U L A S *********************" << endl;
-    for (Peliculas *pelicula : peliculas)   //recorre cada elemento del vector 
+    for (Peliculas *pelicula : peliculas) // recorre cada elemento del vector
     {
-        pelicula->mostrarDatos();   //invoca metodo mostrarDatos de pelicula
+        pelicula->mostrarDatos(); // invoca metodo mostrarDatos de pelicula
     }
 }
 
@@ -87,11 +87,11 @@ void Streaming::mSeries()
 {
     cout << endl;
     cout << "************ S E R I E S ***********" << endl;
-    string nombres = "";    //esta variable controla la impresion del nombre de la serie 
+    string nombres = ""; // esta variable controla la impresion del nombre de la serie
 
-    for (Series *serie : series)    //recorre cada elemento del vector series 
+    for (Series *serie : series) // recorre cada elemento del vector series
     {
-        if (serie->getNombreSerie() != nombres) // si el nombre de la serie es diferente al anterior vuelve a imprimir el nombre, esto se hace para dar formato 
+        if (serie->getNombreSerie() != nombres) // si el nombre de la serie es diferente al anterior vuelve a imprimir el nombre, esto se hace para dar formato
         {
             cout << "========================================================================" << endl;
             cout << "ID: " << serie->getiDSer();
@@ -99,8 +99,8 @@ void Streaming::mSeries()
             nombres = serie->getNombreSerie();
             cout << "========================================================================" << endl;
         }
-        for (Episodio *episodio : serie->getEpisodios())  // recorre episodios de la serie 
-            episodio->mostrarDatos();   //invoca metodo mostrarDatos de episodio
+        for (Episodio *episodio : serie->getEpisodios()) // recorre episodios de la serie
+            episodio->mostrarDatos();                    // invoca metodo mostrarDatos de episodio
     }
 }
 
@@ -111,27 +111,27 @@ bool Streaming::mostrarCalifPel(float valor) const
 
     while (!parametro)
     {
-        for (Peliculas *pelicula : peliculas)
+        for (Peliculas *pelicula : peliculas) // recorre vector peliculas
         {
-            if (pelicula->getCalificacion() >= valor)
+            if (pelicula->getCalificacion() >= valor) // verifica si la calificacion es mayor o igual a la proporcionada
             {
-                pelicula->mostrarDatos();
-                parametro = true;
+                pelicula->mostrarDatos(); // invoca al metodo mostrar Datos
+                parametro = true;         // sale del bucle
             }
         }
 
-        if (!parametro)
+        if (!parametro) // si no hay resultados que cumplan con el parametro del valor dado
         {
             cout << endl;
-            cout << "No se encontraron peliculas con calificacion de " << valor << endl;
+            cout << "No se encontraron peliculas con calificacion de " << valor << endl; // se arroja un texto que advierte lo que paso
 
-            if (valor > calMAX)
+            if (valor > calMAX) // si el valor dado es mayor al delimitado por calMAX
             {
-                cout << "Recuerda que la calificacion maxima es " << calMAX << endl;
+                cout << "Recuerda que la calificacion maxima es " << calMAX << endl; // se arroja un textoo que advierte el limite
                 cout << endl;
             }
             cout << "Ingresa la calificacion por la que deseas filtrar: ";
-            cin >> valor;
+            cin >> valor; // solicita un nuevo valor de calificacion
         }
     }
 
@@ -145,42 +145,43 @@ bool Streaming::mostrarCalifVid(float valor) const
 
     while (!parametro)
     {
-        for (Peliculas *pelicula : peliculas)
+        for (Peliculas *pelicula : peliculas) // recorre vector peliculas
         {
-            if (pelicula->getCalificacion() >= valor)
+            if (pelicula->getCalificacion() >= valor) // verifica si la calificacion es mayor o igual a la proporcionada
             {
-                pelicula->mostrarDatos();
-                parametro = true;
+                pelicula->mostrarDatos(); // invoca al metodo mostrar Datos
+                parametro = true;         // sale del bucle
             }
         }
 
-        for (Series *serie : series)
+        for (Series *serie : series) // Recorre las series y los episodios
         {
             for (Episodio *episodio : serie->getEpisodios())
             {
-                if (episodio->getCalificacion() >= valor)
+                if (episodio->getCalificacion() >= valor) // si encuentra un valor mayor o igual al dado
                 {
+                    // imprime un formato para mostrar el titulo de la serie
                     cout << "========================================================================" << endl;
                     cout << "iD: " << episodio->getID();
                     cout << " Nombre: " << episodio->getNombre() << endl;
                     cout << "========================================================================" << endl;
                     cout << "Genero: " << episodio->getGenero() << endl;
-                    episodio->mostrarDatos();
+                    episodio->mostrarDatos(); // manda a llamar a mostrarDatos de Episodio
                     parametro = true;
                 }
             }
         }
-        if (!parametro)
+        if (!parametro) // si no hay resultados que cumplan con el parametro del valor dado
         {
             cout << endl;
-            cout << "No se encontraron peliculas con calificacion de " << valor << endl;
+            cout << "No se encontraron peliculas con calificacion de " << valor << endl; // se arroja un texto que advierte lo que paso
 
-            if (valor > calMAX)
+            if (valor > calMAX) // si el valor dado es mayor al delimitado por calMAX
             {
-                cout << "Recuerda que la calificacion maxima es " << calMAX << endl;
+                cout << "Recuerda que la calificacion maxima es " << calMAX << endl; // se arroja un textoo que advierte el limite
                 cout << endl;
             }
-            cout << "Ingresa la calificacion por la que deseas filtrar: ";
+            cout << "Ingresa la calificacion por la que deseas filtrar: "; // solicita un nuevo valor de calificacion
             cin >> valor;
         }
     }
@@ -190,21 +191,21 @@ bool Streaming::mostrarCalifVid(float valor) const
 bool Streaming::filtrarSerie(const string &nombreSerie) const
 {
     bool encontrado = false;
-    for (Series *serie : series)
+    for (Series *serie : series) // recorre vector series
     {
-        if (serie->getNombreSerie() == nombreSerie)
+        if (serie->getNombreSerie() == nombreSerie) // si el nombre dado es igual a alguna serie
         {
             encontrado = true;
-            for (Episodio *episodio : serie->getEpisodios())
+            for (Episodio *episodio : serie->getEpisodios()) // se recorren sus episodios
             {
                 cout << "----------------------------------------------------" << endl;
-                episodio->mostrarDatos();
+                episodio->mostrarDatos(); // se invoca al metodo mostrar Datos
             }
         }
     }
-    if (!encontrado)
+    if (!encontrado) // si no hay coincidencias
     {
-        cout << "La serie no esta disponible en la plataforma" << endl;
+        cout << "La serie no esta disponible en la plataforma" << endl; // se avisa al usuario de que no existe la serie en la base de datos
     }
 }
 
@@ -212,36 +213,38 @@ void Streaming::calificacionV()
 {
     string titulo;
     cout << " Ingresa el titulo de la pelicula o episodio que quieres calificar : ";
-    cin.ignore();
+    cin.ignore(); // descarta caracteres residuales y evita que el menu entre en un bucle
     getline(cin, titulo);
 
     bool encontrado = false;
 
-    for (Peliculas *pelicula : peliculas)
+    for (Peliculas *pelicula : peliculas) //  recorre vector peliculas
     {
-        if (pelicula->getNombre() == titulo)
+        if (pelicula->getNombre() == titulo) //  compara los titulos del vector con el nombre otorgado
         {
             float calificacion;
             cout << " Ingresa la calificacion que quieres dar a " << pelicula->getNombre() << " : ";
             cin >> calificacion;
-            pelicula->setCalificacion(calificacion);
+            pelicula->setCalificacion(calificacion); // Asigna la nueva calificacion
             encontrado = true;
+            cout << endl
+                 << " ¡Se asigno la calificacion correctamente! " << endl;
             break;
         }
     }
 
-    if (!encontrado)
+    if (!encontrado) // si no se encuentra en las peliculas, busca en los episodios
     {
-        for (Series *serie : series)
+        for (Series *serie : series)    //  recorre series
         {
-            for (Episodio *episodio : serie->getEpisodios())
+            for (Episodio *episodio : serie->getEpisodios()) // recorre episodios
             {
-                if (episodio->getNombreEpisodio() == titulo)
+                if (episodio->getNombreEpisodio() == titulo)    //  compara el titulo dado con el titulo de episodio
                 {
                     float calificacion;
                     cout << " Ingresa la calificacion que quieres dar a " << episodio->getNombreEpisodio() << " : ";
                     cin >> calificacion;
-                    episodio->setCalificacion(calificacion);
+                    episodio->setCalificacion(calificacion);    // Asigna la calificacion nueva
                     encontrado = true;
                     cout << endl
                          << " ¡Se asigno la calificacion correctamente! " << endl;
@@ -254,7 +257,7 @@ void Streaming::calificacionV()
             }
         }
     }
-    if (!encontrado)
+    if (!encontrado)    //  si no se encuentra el video en ninguno de los dos, arroja un mensaje de error
     {
         cout << "No se encontro en la plataforma el video que diste" << endl;
     }
@@ -265,21 +268,21 @@ float Streaming::promedioCalificacion(const string &nombreSerie) const
     float sumaCalificaciones = 0.0; // Inicializar en 0 la suma de todas las calificaciones
     int totalEpisodios = 0;         // Inicializar en 0 el contador para los episodios de la serie
 
-    for (Series *serie : series)
+    for (Series *serie : series)    //  recorre series
     {
-        if (serie->getNombreSerie() == nombreSerie)
+        if (serie->getNombreSerie() == nombreSerie) //  Si el nombre de la serie es igual al dado por usuario
         {
-            for (Episodio *episodio : serie->getEpisodios())
+            for (Episodio *episodio : serie->getEpisodios())    //  obtiene los episodios
             {
-                sumaCalificaciones += episodio->getCalificacion();
-                totalEpisodios++;
+                sumaCalificaciones += episodio->getCalificacion(); //suma las calificaciones y las va agregando a la variable que teniamos declarada arriba
+                totalEpisodios++;   //aumenta el contador de episodio para dividir con sumaCalificaciones
             }
         }
     }
 
     if (totalEpisodios > 0)
     {
-        return sumaCalificaciones / totalEpisodios;
+        return sumaCalificaciones / totalEpisodios; //calcula el promedio de las calificaciones de los episodios
     }
     else
     {
@@ -292,18 +295,20 @@ void Streaming::filtrarGenero(string &genero)
     cout << "********************* Videos del genero " << genero << "*********************" << endl;
     bool encontrado = false;
 
-    for (const Peliculas *pelicula : peliculas)
+    for (const Peliculas *pelicula : peliculas) //recorre vector serie
     {
-        if (pelicula->getGenero().find(genero) != string::npos)
+        if (pelicula->getGenero().find(genero) != string::npos) // verifica si el genero esta presente en el string de los generos 
+                                                                // != string::npos si no position no es devuelto 
         {
-            pelicula->mostrarDatos();
+            pelicula->mostrarDatos();   // se muestran los datos
             encontrado = true;
         }
     }
-    for (Series *serie : series)
+    for (Series *serie : series)    //recorre vector serie
     {
 
-        if (serie->getGeneroSerie().find(genero) != string::npos)
+        if (serie->getGeneroSerie().find(genero) != string::npos)   // verifica si el genero esta presente en el string de los generos 
+                                                                    // != string::npos si no position no es devuelto
         {
             if (serie->getNombreSerie() != nombres)
             {
@@ -313,14 +318,14 @@ void Streaming::filtrarGenero(string &genero)
                 nombres = serie->getNombreSerie();
                 cout << "========================================================================" << endl;
             }
-            for (Episodio *episodio : serie->getEpisodios())
+            for (Episodio *episodio : serie->getEpisodios())    //recorre episodios
             {
-                episodio->mostrarDatos();
+                episodio->mostrarDatos();   //invoca a muestra Datos de episodio
                 encontrado = true;
             }
         }
     }
-    if (!encontrado)
+    if (!encontrado)    // si no se ecnuentra el genero lanza un mensaje de error
     {
         cout << " No se encontraron Videos con el genero " << genero << endl;
     }
