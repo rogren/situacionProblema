@@ -8,15 +8,15 @@ Define header clase Peliculas
 #define PELICULAS_H
 #include <iostream>
 #include <string>
-#include "Video.h"
+#include "Video.h" //Incluir clase base
 using namespace std;
 
-class Peliculas:public Video{
+class Peliculas:public Video{ //constructor derivado de clase base
     public:
         Peliculas(string iD1, string nombre1, int duracion1, string genero1,
                    float calificacion1, string fechaEstreno1); 
-        void mostrarDatos() const;
-        void setCalificacion(float calificacionNueva);
+        void mostrarDatos() const; // delcaracion de funcion virtual pura declarada en clase base
+        void setCalificacion(float calificacionNueva); // delcaracion de funcion virtual pura declarada en clase base
 };
 
 #endif

@@ -12,7 +12,6 @@ int main()
 
     while (!streaming.CargaExcel(archivo))
     {
-        cout << " Archivo no encontrado " << endl;
         cout << " Ingresa el nombre del archivo que quieres abrir: ";
         cin >> archivo;
     }
@@ -28,7 +27,8 @@ int main()
         cout << "5. Filtrar Episodios de Series" << endl;
         cout << "6. Calificar videos " << endl;
         cout << "7. Obtener promedio de calificacion de serie" << endl;
-        cout << "8. Salir " << endl;
+        cout << "8. Filtrar por genero" << endl;
+        cout << "9. Salir " << endl;
 
         cout << "Elige una opcion: ";
         cin >> opcion;
@@ -79,7 +79,27 @@ int main()
         {
             streaming.calificacionV();
         }
+        else if (opcion == 7)
+        {
+            string nombreSerie;
+            cout << "Ingresa el nombre de la serie para calcular el promedio de calificación: ";
+            cin.ignore();
+            getline(cin, nombreSerie);
+            cout << endl;
+
+            float promedioCalificacion = streaming.promedioCalificacion(nombreSerie);
+            cout << "El promedio de calificación de la serie '" << nombreSerie << "' es: " << promedioCalificacion << endl;
+        }
         else if (opcion == 8)
+        {
+            string genero;
+            cout << " Ingresa el genero que deseas buscar: ";
+            cin.ignore();
+            getline(cin, genero);
+            cout << endl;
+            streaming.filtrarGenero(genero);
+        }
+        else if (opcion == 9)
         {
             cout << "Saliendo del servicio..." << endl;
             break;
@@ -90,6 +110,5 @@ int main()
             cout << "O P C I O N  I N V A L I D A" << endl;
         }
     }
-
     return 0;
 }

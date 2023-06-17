@@ -15,19 +15,20 @@ using namespace std;
 class Series
 {
 private:
-    string iDSer;
-    string nombreSerie;
-    string genero;
-    vector<Episodio *> episodios;
+    string iDSer; // ID de Serie
+    string nombreSerie; // nombre de serie
+    string genero;  // genero de serie
+    vector<Episodio *> episodios; // vector de punteros para almacenar episodios
 
 public:
     Series(string iDSer1, string nombreSerie1, string genero1);
-
+    // getters para obtener variables
     string getiDSer() const;
     string getNombreSerie() const;
-    string getGeneroSerie() const;
-    void agregarEp(Episodio* episodio);
-    vector<Episodio*>&getEpisodios();
+    string getGeneroSerie();
+    
+    void agregarEp(Episodio* episodio); //  funcion para agregar episodios a una serie
+    vector<Episodio*>&getEpisodios();   // getter para acceder al vector de episoios
 
 };
 #endif

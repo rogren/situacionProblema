@@ -7,20 +7,17 @@
 #include <sstream>
 using namespace std;
 
-Streaming::Streaming(){
-
-};
-
-vector<string> Streaming::separar(string linea)
+Streaming::Streaming(){};
+vector<string> Streaming::separar(string linea) // separar una linea en tokens
 {
-    vector<string> tokens;
+    vector<string> tokens; // vector para almacenar tokens
 
-    stringstream entrada(linea);
-    string dato;
-    int numeroTokens = 0;
-    while (getline(entrada, dato, ','))
+    stringstream entrada(linea);        // creacion de stringstream desde la cadena de entrada
+    string dato;                        // variable que almacena cada token
+    int numeroTokens = 0;               // contador tokens
+    while (getline(entrada, dato, ',')) // uso de getline y ',' como delimitador de donde debe terminar cada token
     {
-        if (dato != "")
+        if (dato != "") // si el token no esta vacio
         {
             tokens.push_back(dato); // Guardar en vector
             numeroTokens++;
@@ -31,40 +28,47 @@ vector<string> Streaming::separar(string linea)
 
 bool Streaming::CargaExcel(const string &archivo)
 {
-    ifstream entrada;
-    entrada.open(archivo);
-    if (entrada.is_open())
+    ifstream entrada;      // ifstream lee el archivo
+    entrada.open(archivo); // abrir archivo que se especifica
+    if (entrada.is_open()) // verificar si el archivo se abrio
     {
-        string linea;
-        int numeroLinea = 1;
-        while (getline(entrada, linea))
+        string linea;                   // variable que almacena las lineas del archivo
+        int numeroLinea = 1;            // variable que cuenta numeros de linea
+        while (getline(entrada, linea)) // while para leer el archivo
         {
-            if (numeroLinea > 1)
+            if (numeroLinea > 1) // ignorar primera linea que solo contiene estandares
             {
-                vector<string> datos = separar(linea);
+                vector<string> datos = separar(linea); // Separar los datos de la línea en un vector utilizando la función separar()
 
-                if (datos.size() == 6)
+                if (datos.size() == 6) // si tiene 6 tokens es una pelicula
                 {
+                    // nuevo objeto pelicula con los datos obtenidos
                     Peliculas *pelicula = new Peliculas(datos[0], datos[1], stoi(datos[2]), datos[3], stof(datos[4]), datos[5]);
                     peliculas.push_back(pelicula);
                 }
-                else if (datos.size() == 10)
+                else if (datos.size() == 10) // si tiene 10 tokens es un episodio
                 {
+                    // nuevo objeto episodio con los datos obtenidos
                     Episodio *episodio = new Episodio(datos[0], datos[1], stoi(datos[2]), datos[3], stof(datos[4]), datos[5], datos[6], datos[7], stoi(datos[8]), stoi(datos[9]));
                     episodios.push_back(episodio);
+
+                    // Crear un nuevo objeto de la clase Series y agregarlo al vector series
+                    // La serie se identifica por su nombre, datos[3]
                     Series *nSerie = new Series(datos[0], datos[1], datos[3]);
+                    // agregar episodio a la serie
                     nSerie->agregarEp(episodio);
+                    // agregar serie al vector de series
                     series.push_back(nSerie);
                 }
             }
-            numeroLinea++;
+            numeroLinea++;  //siguiente linea
         }
-        entrada.close();
-        return true;
+        entrada.close();    //cerrar archivo
+        return true;    
     }
     else
     {
-        cout << " ERROR " << endl;
+        cout << " ERROR Archivo no encontrado" << endl;  // mensaje de error si no se encuentra el archivo
         return false;
     }
 }
@@ -73,9 +77,9 @@ void Streaming::mPeliculas()
 {
     cout << endl;
     cout << "********************* P E L I C U L A S *********************" << endl;
-    for (Peliculas *pelicula : peliculas)
+    for (Peliculas *pelicula : peliculas)   //recorre cada elemento del vector 
     {
-        pelicula->mostrarDatos();
+        pelicula->mostrarDatos();   //invoca metodo mostrarDatos de pelicula
     }
 }
 
@@ -83,11 +87,11 @@ void Streaming::mSeries()
 {
     cout << endl;
     cout << "************ S E R I E S ***********" << endl;
-    string nombres = "";
+    string nombres = "";    //esta variable controla la impresion del nombre de la serie 
 
-    for (Series *serie : series)
+    for (Series *serie : series)    //recorre cada elemento del vector series 
     {
-        if (serie->getNombreSerie() != nombres)
+        if (serie->getNombreSerie() != nombres) // si el nombre de la serie es diferente al anterior vuelve a imprimir el nombre, esto se hace para dar formato 
         {
             cout << "========================================================================" << endl;
             cout << "ID: " << serie->getiDSer();
@@ -95,8 +99,8 @@ void Streaming::mSeries()
             nombres = serie->getNombreSerie();
             cout << "========================================================================" << endl;
         }
-        for (Episodio *episodio : serie->getEpisodios())
-            episodio->mostrarDatos();
+        for (Episodio *episodio : serie->getEpisodios())  // recorre episodios de la serie 
+            episodio->mostrarDatos();   //invoca metodo mostrarDatos de episodio
     }
 }
 
@@ -203,6 +207,7 @@ bool Streaming::filtrarSerie(const string &nombreSerie) const
         cout << "La serie no esta disponible en la plataforma" << endl;
     }
 }
+
 void Streaming::calificacionV()
 {
     string titulo;
@@ -238,7 +243,8 @@ void Streaming::calificacionV()
                     cin >> calificacion;
                     episodio->setCalificacion(calificacion);
                     encontrado = true;
-                    cout << endl << " ¡Se asigno la calificacion correctamente! " << endl;
+                    cout << endl
+                         << " ¡Se asigno la calificacion correctamente! " << endl;
                     break;
                 }
             }
@@ -254,3 +260,68 @@ void Streaming::calificacionV()
     }
 }
 
+float Streaming::promedioCalificacion(const string &nombreSerie) const
+{
+    float sumaCalificaciones = 0.0; // Inicializar en 0 la suma de todas las calificaciones
+    int totalEpisodios = 0;         // Inicializar en 0 el contador para los episodios de la serie
+
+    for (Series *serie : series)
+    {
+        if (serie->getNombreSerie() == nombreSerie)
+        {
+            for (Episodio *episodio : serie->getEpisodios())
+            {
+                sumaCalificaciones += episodio->getCalificacion();
+                totalEpisodios++;
+            }
+        }
+    }
+
+    if (totalEpisodios > 0)
+    {
+        return sumaCalificaciones / totalEpisodios;
+    }
+    else
+    {
+        return 0; // Si no se encontraron episodios de la serie, el promedio es 0.
+    }
+}
+void Streaming::filtrarGenero(string &genero)
+{
+    string nombres = "";
+    cout << "********************* Videos del genero " << genero << "*********************" << endl;
+    bool encontrado = false;
+
+    for (const Peliculas *pelicula : peliculas)
+    {
+        if (pelicula->getGenero().find(genero) != string::npos)
+        {
+            pelicula->mostrarDatos();
+            encontrado = true;
+        }
+    }
+    for (Series *serie : series)
+    {
+
+        if (serie->getGeneroSerie().find(genero) != string::npos)
+        {
+            if (serie->getNombreSerie() != nombres)
+            {
+                cout << "========================================================================" << endl;
+                cout << "ID: " << serie->getiDSer();
+                cout << " Nombre: " << serie->getNombreSerie() << endl;
+                nombres = serie->getNombreSerie();
+                cout << "========================================================================" << endl;
+            }
+            for (Episodio *episodio : serie->getEpisodios())
+            {
+                episodio->mostrarDatos();
+                encontrado = true;
+            }
+        }
+    }
+    if (!encontrado)
+    {
+        cout << " No se encontraron Videos con el genero " << genero << endl;
+    }
+}
