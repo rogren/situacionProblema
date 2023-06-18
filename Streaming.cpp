@@ -79,7 +79,7 @@ void Streaming::mPeliculas()
     cout << "********************* P E L I C U L A S *********************" << endl;
     for (Peliculas *pelicula : peliculas) // recorre cada elemento del vector
     {
-        pelicula->mostrarDatos(); // invoca metodo mostrarDatos de pelicula
+        cout << *pelicula;
     }
 }
 
@@ -100,7 +100,9 @@ void Streaming::mSeries()
             cout << "========================================================================" << endl;
         }
         for (Episodio *episodio : serie->getEpisodios()) // recorre episodios de la serie
-            episodio->mostrarDatos();                    // invoca metodo mostrarDatos de episodio
+        {
+            cout << *episodio; // Utiliza la sobrecarga del operador << para imprimir los detalles del episodio
+        }
     }
 }
 
@@ -115,8 +117,8 @@ bool Streaming::mostrarCalifPel(float valor) const
         {
             if (pelicula->getCalificacion() >= valor) // verifica si la calificacion es mayor o igual a la proporcionada
             {
-                pelicula->mostrarDatos(); // invoca al metodo mostrar Datos
-                parametro = true;         // sale del bucle
+                cout << *pelicula;
+                parametro = true; // sale del bucle
             }
         }
 
@@ -149,8 +151,8 @@ bool Streaming::mostrarCalifVid(float valor) const
         {
             if (pelicula->getCalificacion() >= valor) // verifica si la calificacion es mayor o igual a la proporcionada
             {
-                pelicula->mostrarDatos(); // invoca al metodo mostrar Datos
-                parametro = true;         // sale del bucle
+                cout << *pelicula;
+                parametro = true; // sale del bucle
             }
         }
 
@@ -166,7 +168,7 @@ bool Streaming::mostrarCalifVid(float valor) const
                     cout << " Nombre: " << episodio->getNombre() << endl;
                     cout << "========================================================================" << endl;
                     cout << "Genero: " << episodio->getGenero() << endl;
-                    episodio->mostrarDatos(); // manda a llamar a mostrarDatos de Episodio
+                    cout << *episodio; // Utiliza la sobrecarga del operador << para imprimir los detalles del episodio
                     parametro = true;
                 }
             }
@@ -199,7 +201,7 @@ bool Streaming::filtrarSerie(const string &nombreSerie) const
             for (Episodio *episodio : serie->getEpisodios()) // se recorren sus episodios
             {
                 cout << "----------------------------------------------------" << endl;
-                episodio->mostrarDatos(); // se invoca al metodo mostrar Datos
+                cout << *episodio; // Utiliza la sobrecarga del operador << para imprimir los detalles del episodio
             }
         }
     }
@@ -235,16 +237,16 @@ void Streaming::calificacionV()
 
     if (!encontrado) // si no se encuentra en las peliculas, busca en los episodios
     {
-        for (Series *serie : series)    //  recorre series
+        for (Series *serie : series) //  recorre series
         {
             for (Episodio *episodio : serie->getEpisodios()) // recorre episodios
             {
-                if (episodio->getNombreEpisodio() == titulo)    //  compara el titulo dado con el titulo de episodio
+                if (episodio->getNombreEpisodio() == titulo) //  compara el titulo dado con el titulo de episodio
                 {
                     float calificacion;
                     cout << " Ingresa la calificacion que quieres dar a " << episodio->getNombreEpisodio() << " : ";
                     cin >> calificacion;
-                    episodio->setCalificacion(calificacion);    // Asigna la calificacion nueva
+                    episodio->setCalificacion(calificacion); // Asigna la calificacion nueva
                     encontrado = true;
                     cout << endl
                          << " ¡Se asigno la calificacion correctamente! " << endl;
@@ -257,7 +259,7 @@ void Streaming::calificacionV()
             }
         }
     }
-    if (!encontrado)    //  si no se encuentra el video en ninguno de los dos, arroja un mensaje de error
+    if (!encontrado) //  si no se encuentra el video en ninguno de los dos, arroja un mensaje de error
     {
         cout << "No se encontro en la plataforma el video que diste" << endl;
     }
@@ -268,21 +270,21 @@ float Streaming::promedioCalificacion(const string &nombreSerie) const
     float sumaCalificaciones = 0.0; // Inicializar en 0 la suma de todas las calificaciones
     int totalEpisodios = 0;         // Inicializar en 0 el contador para los episodios de la serie
 
-    for (Series *serie : series)    //  recorre series
+    for (Series *serie : series) //  recorre series
     {
         if (serie->getNombreSerie() == nombreSerie) //  Si el nombre de la serie es igual al dado por usuario
         {
-            for (Episodio *episodio : serie->getEpisodios())    //  obtiene los episodios
+            for (Episodio *episodio : serie->getEpisodios()) //  obtiene los episodios
             {
-                sumaCalificaciones += episodio->getCalificacion(); //suma las calificaciones y las va agregando a la variable que teniamos declarada arriba
-                totalEpisodios++;   //aumenta el contador de episodio para dividir con sumaCalificaciones
+                sumaCalificaciones += episodio->getCalificacion(); // suma las calificaciones y las va agregando a la variable que teniamos declarada arriba
+                totalEpisodios++;                                  // aumenta el contador de episodio para dividir con sumaCalificaciones
             }
         }
     }
 
     if (totalEpisodios > 0)
     {
-        return sumaCalificaciones / totalEpisodios; //calcula el promedio de las calificaciones de los episodios
+        return sumaCalificaciones / totalEpisodios; // calcula el promedio de las calificaciones de los episodios
     }
     else
     {
@@ -295,20 +297,20 @@ void Streaming::filtrarGenero(string &genero)
     cout << "********************* Videos del genero " << genero << "*********************" << endl;
     bool encontrado = false;
 
-    for (const Peliculas *pelicula : peliculas) //recorre vector serie
+    for (const Peliculas *pelicula : peliculas) // recorre vector serie
     {
-        if (pelicula->getGenero().find(genero) != string::npos) // verifica si el genero esta presente en el string de los generos 
-                                                                // != string::npos si no position no es devuelto 
+        if (pelicula->getGenero().find(genero) != string::npos) // verifica si el genero esta presente en el string de los generos
+                                                                // != string::npos si no position no es devuelto
         {
-            pelicula->mostrarDatos();   // se muestran los datos
+            cout << *pelicula; // Utiliza la sobrecarga del operador << para imprimir la película
             encontrado = true;
         }
     }
-    for (Series *serie : series)    //recorre vector serie
+    for (Series *serie : series) // recorre vector serie
     {
 
-        if (serie->getGeneroSerie().find(genero) != string::npos)   // verifica si el genero esta presente en el string de los generos 
-                                                                    // != string::npos si no position no es devuelto
+        if (serie->getGeneroSerie().find(genero) != string::npos) // verifica si el genero esta presente en el string de los generos
+                                                                  // != string::npos si no position no es devuelto
         {
             if (serie->getNombreSerie() != nombres)
             {
@@ -318,14 +320,14 @@ void Streaming::filtrarGenero(string &genero)
                 nombres = serie->getNombreSerie();
                 cout << "========================================================================" << endl;
             }
-            for (Episodio *episodio : serie->getEpisodios())    //recorre episodios
+            for (Episodio *episodio : serie->getEpisodios()) // recorre episodios
             {
-                episodio->mostrarDatos();   //invoca a muestra Datos de episodio
+                cout << *episodio; // Utiliza la sobrecarga del operador << para imprimir los detalles del episodio
                 encontrado = true;
             }
         }
     }
-    if (!encontrado)    // si no se ecnuentra el genero lanza un mensaje de error
+    if (!encontrado) // si no se ecnuentra el genero lanza un mensaje de error
     {
         cout << " No se encontraron Videos con el genero " << genero << endl;
     }

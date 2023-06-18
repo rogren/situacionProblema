@@ -22,7 +22,6 @@ class Video{
         Video(string iD1, string nombre1, int duracion1, string genero1,
                  float calificacion1, string fechaEstreno1);
 
-        virtual void mostrarDatos() const = 0;      // funcion virtual pura para mostrar informacion sobre el video
         virtual void setCalificacion(float calificacionNueva) = 0;  // funcion virtual pura para asignar calificacion a un video
         // Getters para obtener informacion con metodo de acceso privado
         string getID() const;

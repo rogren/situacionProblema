@@ -22,10 +22,7 @@ Video::Video(string iD1, string nombre1, int duracion1, string genero1,
     fechaEstreno = fechaEstreno1;
 }
 
-void Video::mostrarDatos() const
-{
-    // funcion virtual pura vacia, la implementacion se realiza en las clases derivadas Peliculas y Episodios
-}
+
 void Video::setCalificacion(float calificacionNueva) 
 {
     int calMAX = 7; //valor maximo que se puede dar de calificacion

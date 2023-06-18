@@ -25,13 +25,14 @@ public:
              float calificacion1, string fechaEstreno1, string iDepisodio1, string nombreEpisodio1,
              int temporada1, int numEpisodio1);
 
-    void mostrarDatos() const; // funcion virtual pura de Video para mostrar datos de episodio
     // getters para acceder a variables con metodo de acceso privado
     int getTemporada() const;
     int getNumEpisodio() const;
     string getIdEp() const;
     string getNombreEpisodio() const;
     void setCalificacion(float calificacionNueva);
+    friend ostream& operator<<(ostream& os, const Episodio& episodio);
+
 };
 
 #endif

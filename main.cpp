@@ -82,13 +82,13 @@ int main()
         else if (opcion == 7)
         {
             string nombreSerie;
-            cout << "Ingresa el nombre de la serie para calcular el promedio de calificación: ";
+            cout << "Ingresa el nombre de la serie para calcular el promedio: ";
             cin.ignore();   // descarta caracteres residuales y evita que el menu entre en un bucle
             getline(cin, nombreSerie);
             cout << endl;
 
             float promedioCalificacion = streaming.promedioCalificacion(nombreSerie);   //llama al metodo promedioCalificacion de clase Streaming 
-            cout << "El promedio de calificacion de la serie '" << nombreSerie << "' es: " << promedioCalificacion << endl;
+            cout << "El promedio '" << nombreSerie << "' es: " << promedioCalificacion << endl;
         }
         else if (opcion == 8)
         {
